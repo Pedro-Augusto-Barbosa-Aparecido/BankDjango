@@ -1,7 +1,8 @@
 from django.db import models
 
 # Create your models here.
-from code.office.models import Cargo
+from office.models import Cargo
+from accounts.models import Account
 
 
 class Person(models.Model):
@@ -31,11 +32,29 @@ class Person(models.Model):
 
 class Employee(models.Model):
     person = models.ForeignKey(Person, on_delete=models.PROTECT, blank=False, null=False)
-    salario = models.DecimalField(decimal_places=2, null=False, blank=False)
+    salario = models.DecimalField(max_digits=10 ,decimal_places=2, null=False, blank=False)
     cargo = models.ForeignKey(Cargo, blank=False, null=False, on_delete=models.PROTECT)
+    active = models.BooleanField(default=True)
 
     class Meta: 
         verbose_name = "Funcionário"
         verbose_name_plural = "Funcionários"
 
         ordering = ["cargo"]
+
+    def __str__(self) -> str:
+        return f"{str(self.person)} - {self.cargo}"
+
+class Client(models.Model):
+    person = models.ForeignKey(Person, on_delete=models.PROTECT, blank=False, null=False)
+    account = models.ForeignKey(Account, on_delete=models.PROTECT, blank=False, null=False)
+    active = models.BooleanField(default=True)
+
+    class Meta:
+        verbose_name = "Cliente"
+        verbose_name_plural = "Clientes"
+
+        ordering = ["pk"]
+
+    def __str__(self) -> str:
+        return str(self.person)
