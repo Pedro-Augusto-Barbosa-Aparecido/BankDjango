@@ -29,4 +29,15 @@ class Account(models.Model):
     def __str__(self) -> str:
         return self.name
 
-    
+class Translations(models.Model):
+    account = models.ForeignKey(Account, on_delete=models.PROTECT, blank=False, null=False)
+    value = models.DecimalField(max_digits=10, decimal_places=2, blank=False, null=False)
+
+    class Meta:
+        verbose_name = "Transferência"
+        verbose_name_plural = "Transferências"
+
+        ordering = ["value"]
+
+    def __str__(self) -> str:
+        return f"Transferência {self.pk}"    
