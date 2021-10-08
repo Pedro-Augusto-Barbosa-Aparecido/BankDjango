@@ -18,8 +18,10 @@ from django.urls import path, include
 from django.conf.urls.static import static
 
 from .settings import STATIC_URL, STATIC_ROOT
+from .views import Home
 
 urlpatterns = [
+    path("", Home.as_view(), name="home"),
     path('admin/', admin.site.urls),
     path("person/", include("person.urls"))
 ] + static(STATIC_URL, document_root=STATIC_ROOT)
