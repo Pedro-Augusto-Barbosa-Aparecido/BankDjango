@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ title }}{% endblock title %}
+{% block extraCSS %}
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
+
+{% block extraJS %}
+    <script type="text/javascript" src="{% static 'js/link-pages.js' %}">
+        window.onload = function () {
+            alert("TEST")
+            linkPages();
+        }
+    </script>
+{% endblock %}
+
+{% block content %}
+    <div class="block-container">
+        <div class="block-menu">
+            <div class="item background-red">
+                <p class="item-word">Account</p>
+            </div>
+            <div class="item-sec">
+                <a class="item-word" href="{# {% url 'account-list' %} #}">Account List Page</a>
+            </div>
+            <div class="item-sec" id="last">
+                <a class="item-word" href="{# {% url 'account-create' %} #}">Account Create Page</a>
+            </div>
+        </div>
+        <div class="block-menu">
+            <div class="item background-red">
+                <p class="item-word">Person</p>
+            </div>
+            <div class="item-sec">
+                <a class="item-word" href="{% url 'person-list' %}">Person List Page</a>
+            </div>
+            <div class="item-sec" id="last">
+                <a class="item-word" href="{# {% url 'person-create' %} #}">Person Create Page</a>
+            </div>
+        </div>
+        <div class="block-menu">
+            <div class="item background-red">
+                <p class="item-word">Office</p>
+            </div>
+            <div class="item-sec">
+                <a class="item-word" href="{# {% url 'office-list' %} #}">Office List Page</a>
+            </div>
+            <div class="item-sec" id="last">
+                <a class="item-word" href="{# {% url 'office-create' %} #}">Office Create Page</a>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

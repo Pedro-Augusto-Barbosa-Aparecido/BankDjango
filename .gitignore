@@ -1,2 +1,5 @@
 /bank_django_venv
 /.idea
+/code/assets/static/css
+/code/assets/static/admin
+!/code/assets/static/.gitkeep
