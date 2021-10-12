@@ -31,6 +31,14 @@
 
     margin-left: 20px;
 
+    text-decoration: none;
+
+}
+
+.button-nav:hover {
+    cursor: pointer;
+    color: white;
+
 }
 
 .block-container {
@@ -97,7 +105,7 @@
 
 }
 
-.item-word:hover {
+.item-sec .item-word:hover {
     cursor: pointer;
 
     text-decoration: darkblue;

@@ -19,6 +19,7 @@ class Person(models.Model):
     age = models.IntegerField(blank=False, null=False)
     email = models.CharField(max_length=100, blank=False, null=False, unique=True)
     gender = models.CharField(max_length=20, blank=False, null=False, choices=CHOICES)
+    active = models.BooleanField(default=True, blank=False, null=False)
     
     class Meta:
         verbose_name_plural = "Pessoas"
@@ -44,6 +45,7 @@ class Employee(models.Model):
 
     def __str__(self) -> str:
         return f"{str(self.person)} - {self.cargo}"
+
 
 class Client(models.Model):
     person = models.ForeignKey(Person, on_delete=models.PROTECT, blank=False, null=False)

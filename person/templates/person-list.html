@@ -1,10 +1,113 @@
-{% extends 'proj/home.html' %}
+{% extends 'base.html' %}
 {% load static %}
 
 {% block title %}Person List Page{% endblock %}
 
+{% block extraCSS %}
+    <link rel="stylesheet" href="{% static 'css/person.css' %}">
+{% endblock %}
+
+{% block extraJS %}
+    <script type="text/javascript">
+        window.onload = function () {
+            const columns = document.getElementsByTagName("td");
+            let lastColumn = null;
+
+            for (let lastColumnElement of columns) {
+                if (lastColumnElement.textContent === "Gender"){
+                    lastColumn = lastColumnElement;
+                    break;
+
+                }
+
+            }
+
+            lastColumn.classList.remove("header-border");
+
+        }
+
+    </script>
+{% endblock %}
+
 {% block content %}
-    <div>
-        {{ objects }}
+    <div class="container-list">
+        <div style="width: 100%; display: flex; justify-content: center;">
+            <form id="filterForm" style="width: 810px">
+                <div class="container-filter">
+                    <div class="container-inputs">
+                        <label for="name">Name:  </label>
+                        <input name="name" id="name" type="text">
+                    </div>
+                    <div class="container-inputs">
+                        <label for="status">Status:  </label>
+                        <select name="status" id="status">
+                            <option value="1">YES</option>
+                            <option value="0">NO</option>
+                            <option value="-1" selected></option>
+                        </select>
+                    </div>
+                    <div class="container-inputs">
+                        <label for="gender">Gender:  </label>
+                        <select name="gender" id="gender">
+                            <option value="M">MALE</option>
+                            <option value="F">FEMALE</option>
+                            <option value="-1" selected></option>
+                        </select>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="container-button">
+            <div class="submit-button">
+                <label for="submit">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                </label>
+                <input type="submit" name="submit" id="submit" value="Filter" form="filterForm">
+            </div>
+            <div class="reset-button">
+                <label for="reset">
+                    <i class="fa fa-eraser" aria-hidden="true"></i>
+                </label>
+                <input type="reset" name="reset" id="reset" value="Clear" form="filterForm">
+            </div>
+        </div>
+        <div class="table">
+            <table>
+                <thead>
+                    <tr>
+                        <td class="column header-border">Actions</td>
+                        {% for label in fields %}
+                            <td class="column header-border">{{ label }}</td>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for person in objects %}
+                        <tr>
+                            <td class="column-data">
+                                <label for="select" hidden></label>
+                                <input type="checkbox" name="select" id="select">
+                            </td>
+                            <td class="column-data">{{ person.name }}</td>
+                            <td class="column-data">{{ person.email }}</td>
+                            <td class="column-data">
+                                {% if person.active %}
+                                    YES
+                                {% else %}
+                                    NO
+                                {% endif %}
+                            </td>
+                            <td class="column-data">
+                                {% if person.gender == 'M' %}
+                                    MALE
+                                {% else %}
+                                    FEMALE
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
 {% endblock content %}
