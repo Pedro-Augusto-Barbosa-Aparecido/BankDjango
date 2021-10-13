@@ -8,7 +8,7 @@ function linkPages() {
 
         else if (link.textContent.toLowerCase().includes("person")) {
             if (link.textContent.toLowerCase().includes("list")) {
-                link.href = "{% url 'person-list' %}"
+                link.href = "/person/"
             }
         }
 

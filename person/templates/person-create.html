@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block extraCSS %}
+    <link rel="stylesheet" href="{% static "css/person-create.css" %}">
+{% endblock %}
+
+{% block extraJS %}
+    <script src="{% static 'js/mask.js' %}"></script>
+    <script type="text/javascript">
+        document.querySelector('#cpf').addEventListener("input", (e) => {
+            e.target.value = mask.cpf(e.target.value);
+
+        }, false);
+
+        document.querySelector("#age").addEventListener("input", (e) => {
+            e.target.value = mask.age(e.target.value);
+
+        }, false);
+
+        document.querySelector("#name").addEventListener("input", (e) => {
+            e.target.value = mask.name(e.target.value);
+
+        }, false);
+    </script>
+{% endblock %}
+
+{% block content %}
+    <div class="container-create">
+        <h1>Create Person</h1>
+        <form id="createForm">
+            <div style="width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                <div class="container-field">
+                    <label for="name">
+                        Name:
+                    </label>
+                    <input type="text" name="name" id="name" placeholder="Type your name..." autocomplete="off" required>
+                </div>
+                <div class="container-field">
+                    <label for="cpf">
+                        CPF:
+                    </label>
+                    <input type="text" name="cpf" id="cpf" autocomplete="off" maxlength="14" placeholder="Ex: 111.111.111-11" required>
+                </div>
+                <div class="container-field">
+                    <label for="email">
+                        Email:
+                    </label>
+                    <input type="email" name="email" id="email" autocomplete="off" placeholder="Type your email...">
+                </div>
+                <div class="container-field-check">
+                    <div>
+                        <label for="age">
+                            Age:
+                        </label>
+                        <input type="text" name="age" id="age" maxlength="2" placeholder="Age..." autocomplete="off" required>
+                    </div>
+                    <div id="gender_container">
+                        <label for="gender">
+                            Gender:
+                        </label>
+                        <select name="gender" id="gender">
+                            <option value="F">FEMALE</option>
+                            <option value="M" selected>MALE</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="container-active">
+                    <input type="checkbox" name="active" id="active" checked>
+                    <label for="active">
+                        Active
+                    </label>
+                </div>
+            </div>
+            <div style="width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                <div class="container-btn">
+                    <a class="btn-cancel" href="{% url 'person-list' %}">
+                        Cancel
+                    </a>
+                    <div>
+                        <input class="btn-cancel btn-reset" type="reset" name="reset" id="reset" value="Clear">
+                        <input class="btn-cancel btn-send" type="submit" name="submit" id="submit" value="Submit">
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}

@@ -70,6 +70,10 @@
                 </label>
                 <input type="reset" name="reset" id="reset" value="Clear" form="filterForm">
             </div>
+            <a class="create-button" href="{% url 'person-create' %}">
+                <i class="fa fa-plus" aria-hidden="true"></i>
+                Create
+            </a>
         </div>
         <div class="table">
             <table>
@@ -88,7 +92,9 @@
                                 <label for="select" hidden></label>
                                 <input type="checkbox" name="select" id="select">
                             </td>
-                            <td class="column-data">{{ person.name }}</td>
+                            <td class="column-data">
+                                <a class="detail" href="{% url 'person-detail' person.pk %}">{{ person.name }}</a>
+                            </td>
                             <td class="column-data">{{ person.email }}</td>
                             <td class="column-data">
                                 {% if person.active %}

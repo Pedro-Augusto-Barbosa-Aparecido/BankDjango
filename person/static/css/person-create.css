@@ -1,0 +1,134 @@
+.container-create {
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    /*align-items: flex-start;*/
+
+    width: 100%;
+    height: fit-content;
+
+}
+
+h1 {
+    text-decoration: underline;
+    text-align: center;
+
+    font-family: Arial;
+    font-style: italic;
+
+    margin-top: 40px;
+
+}
+
+input {
+    padding: 7px;
+
+}
+
+.container-field {
+    display: flex;
+
+    flex-direction: column;
+
+    width: 20%;
+
+    margin-top: 15px;
+
+}
+
+.container-field input {
+    height: 30px;
+
+    border-radius: 5px;
+
+    /*align-content: center;*/
+    /*text-align: justify;*/
+
+}
+
+.container-field-check {
+    display: flex;
+
+    flex-direction: row;
+    justify-content: space-between;
+
+    width: 20%;
+
+    margin-top: 15px;
+
+}
+
+#gender_container {
+    margin-left: 20px;
+
+}
+
+#gender_container select {
+    height: 30px;
+    width: 80px;
+
+    border-radius: 5px;
+
+}
+
+.container-field-check input {
+    height: 30px;
+
+    border-radius: 5px;
+
+    /*text-align: center;*/
+
+}
+
+.container-active {
+    position: relative;
+
+    right: 8.5%;
+
+    margin-top: 15px;
+
+}
+
+.btn-cancel {
+    border-radius: 0;
+    border-color: black;
+    border-width: 1px;
+    border-style: solid;
+
+    background-color: red;
+
+    padding: 10px;
+
+    text-decoration: none;
+
+    color: black;
+
+    font-family: Arial;
+
+    margin-top: 8px;
+
+}
+
+.btn-send {
+    background-color: #44BB44;
+
+}
+
+.btn-reset {
+    background-color: lightgray;
+
+}
+
+.container-btn {
+    display: flex;
+
+    flex-direction: row;
+
+    justify-content: space-between;
+
+    width: 20%;
+
+}
