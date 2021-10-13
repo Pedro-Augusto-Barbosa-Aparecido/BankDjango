@@ -51,7 +51,7 @@ class PersonDetailView(BaseView):
         context = self._get_context()
         context["title"] = "Person Detail"
         context["home"] = False
-        context["person"] = self.get_qs(pk)
+        context["person"] = self.get_qs(pk)[0]
 
         return context
 

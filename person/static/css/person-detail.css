@@ -1,0 +1,28 @@
+.container {
+    display: flex;
+
+    justify-content: center;
+
+    flex-direction: column;
+
+    width: fit-content;
+
+}
+
+.container-detail {
+    display: flex;
+
+    flex-direction: column;
+
+    text-overflow: ellipsis;
+
+    justify-content: space-between;
+
+    margin-top: 40px;
+
+}
+
+input:disabled {
+    color: red;
+
+}

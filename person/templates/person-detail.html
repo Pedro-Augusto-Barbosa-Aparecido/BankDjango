@@ -4,10 +4,25 @@
 {% block title %}{{ title }}{% endblock %}
 
 {% block extraCSS %}
+    <link rel="stylesheet" href="{% static 'css/person-detail.css' %}">
 {% endblock %}
 
 {% block content %}
-    <div>
-        {{ person }}
+    <div class="container">
+        <h1>Detail of person {{ person.pk }}</h1>
+
+        <div class="container-detail">
+            <p>Name:    {{ person.name }}</p>
+            <p>Email:   {{ person.email }}</p>
+            <p>CPF:     {{ person.cpf }}</p>
+            <p>
+                Gender: {% if person.gender == "M" %}Male{% else %}Female{% endif %}
+            </p>
+            <div style="display: flex; flex-direction: row; justify-content: flex-start; align-items: center;">
+                <input type="checkbox" name="active" id="active" {% if person.active %} checked {% endif %} disabled>
+                <label for="active" style="margin-left: 4px">Active</label>
+            </div>
+        </div>
+
     </div>
 {% endblock %}
