@@ -5,6 +5,18 @@ import os
 
 BASE_DIR = Path(__file__).resolve().parent
 
+pull = input("Do you want to pull? (Y/n) ").lower()
+
+if pull == "y" or pull == "n":
+    pull = pull == "y"
+
+else:
+    raise ValueError("Type only (Y/n)!!")
+
+if pull:
+    system(f"cd {BASE_DIR} && git pull")
+    exit(0)
+
 status = input("Do you want to see git status? (Y/n) ").lower()
 
 if status == "y" or status == "n":
