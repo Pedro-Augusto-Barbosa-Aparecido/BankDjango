@@ -24,5 +24,10 @@
             </div>
         </div>
 
+        <div class="container-button-edit">
+            <a class="button-detail btn-warning" href="{% url 'person-edit' person.pk %}">Edit</a>
+            <a class="button-detail btn-success" href="{% url 'person-list' %}">OK</a>
+        </div>
+
     </div>
 {% endblock %}

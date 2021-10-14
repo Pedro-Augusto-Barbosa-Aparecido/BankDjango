@@ -57,3 +57,20 @@ class PersonDetailView(BaseView):
 
     def get_qs(self, pk):
         return Person.objects.all().filter(pk=pk)
+
+
+class PersonEditView(BaseView):
+
+    def get(self, request, pk):
+        return render(request, "person-edit.html", self.get_context(pk))
+
+    def get_context(self, pk):
+        context = self._get_context()
+        context["title"] = "Person Edit"
+        context["home"] = False
+        context["person"] = self.get_qs(pk)
+
+        return context
+
+    def get_qs(self, pk):
+        return Person.objects.filter(pk=pk)
